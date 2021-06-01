@@ -8,6 +8,12 @@ import MekQa from '@/pages/MekQa.vue'
 import Relation from '@/pages/Relation.vue'
 import Schemas from '@/pages/Schemas.vue'
 
+
+const originPush = Router.prototype.push
+Router.prototype.push = function push(location){
+    return originPush.call(this, location).catch(err => err)
+}
+
 Vue.use(Router)
 
 export default new Router({

@@ -1,75 +1,83 @@
 <template>
-    <div>
-    <title-bar/>
+  <div>
+    <title-bar />
     <el-divider></el-divider>
 
-    <div  id='input'>
-        <span> 实体识别</span>
-        <el-input id='input1st' type='textarea' :autosize="{minRows:4,maxRows:8}" placeholder="请输入内容" v-model="text1"></el-input>
-        <el-row id='buttonrow'>
+    <div id="input">
+      <el-tag> 实体识别</el-tag>
+      <el-input
+        id="input1st"
+        type="textarea"
+        :autosize="{ minRows: 4, maxRows: 8 }"
+        placeholder="请输入内容"
+        v-model="text1"
+      ></el-input>
+      <el-row id="buttonrow">
+        <el-button type="primary" id="help" size="small" round @click="help"
+          >帮助</el-button
+        >
+        <el-button type="primary" id="submit" size="small" round
+          >提交</el-button
+        >
+      </el-row>
 
-        <el-button type='primary' id='help' size='small' round @click='help' >帮助</el-button>
-        <el-button type='primary' id='submit' size='small' round>提交</el-button>
-        </el-row>
-
-        <el-input id='input2nd' type='textarea' :autosize="{minRows:9,maxRows:14}" placeholder="" v-model="text2"></el-input>
-
+      <el-input
+        id="input2nd"
+        type="textarea"
+        :autosize="{ minRows: 9, maxRows: 14 }"
+        placeholder=""
+        v-model="text2"
+      ></el-input>
     </div>
-
-
-
-    </div>
-
+  </div>
 </template>
 
 
 
 <script>
-import TitleBar from '../components/TitleBar.vue'
+import TitleBar from "../components/TitleBar.vue";
 
-export default{
-    name:'MedicalSeg',
-    components:{
-        TitleBar
-    },
-    data(){
-        return{
-            text1: '',
-            text2: '',
+export default {
+  name: "MedicalSeg",
+  components: {
+    TitleBar,
+  },
+  data() {
+    return {
+      text1: "",
+      text2: "",
+    };
+  },
+  methods: {
+    help() {
+      this.$alert(
+        "输入疾病、症状等医学相关文本，返回文本中医学实体字典。",
+        "帮助",
+        {
+          confrimButtonText: "确定",
         }
+      );
     },
-    methods:{
-        help(){
-            this.$alert('输入疾病、症状等医学相关文本，返回文本中医学实体字典。','帮助',{
-                confrimButtonText:'确定',
-            })
-        }
-    }
-
-}
-
-
+  },
+};
 </script>
 
 
 <style scoped type='type/css'>
-
-#input{
-    width:800px;
-    margin:80px auto 10px;
-    padding:10px auto;
-    position:relative;
+#input {
+  width: 800px;
+  margin: 80px auto 10px;
+  padding: 10px auto;
+  position: relative;
 }
 
-#buttonrow{
-    text-align:right;
-    margin: 20px auto 5px;
-    padding:5px auto;
+#buttonrow {
+  text-align: right;
+  margin: 20px auto 5px;
+  padding: 5px auto;
 }
 
-#input2nd{
-    margin:0 auto;
-    
+#input2nd {
+  margin: 0 auto;
 }
-
 </style>
